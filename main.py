@@ -1,6 +1,5 @@
 from typing import Literal
-
-from fastapi import FastAPI ,HTTPException
+from fastapi import FastAPI
 import uvicorn
 from pydantic import BaseModel
 import encrypt_decrypt
@@ -15,7 +14,7 @@ class Fence(BaseModel):
     text:str
 
 
-@app.get("/test/")
+@app.get("/test")
 def root():
     return {"msg":"hi from test"}
 
@@ -43,7 +42,7 @@ def fence_cipher_endpoints(text):
 
 @app.post("/fence/decrypt")
 def fence_cipher_decrypt(text:Fence):
-    response = encrypt_decrypt.decrypt_cipher_fence_rail(text)
+    response = encrypt_decrypt.decrypt_cipher_fence_rail(text.text)
     return {"decrypted": f"{response}" }
 
 
