@@ -40,18 +40,16 @@ def cipher_fence_rail(text):
     return even_letters+odd_letters
 
 def decrypt_cipher_fence_rail(text):
-    half_text = len(text)//2
-    even_letters = text[:half_text]
-    odd_letters = text[len(text)//2:]
+    half_text = len(text) // 2
+    even_letters = text[:half_text+1]
+    odd_letters = text[half_text+1:]
     decrypt_text = ""
     for i in range(half_text + 1):
         if len(even_letters)-1 >= i:
             decrypt_text += even_letters[i]
+            print(decrypt_text)
         if len(odd_letters)-1 >= i:
             decrypt_text += odd_letters[i]
+            print(decrypt_text)
     return decrypt_text
-
-
-
-
 
