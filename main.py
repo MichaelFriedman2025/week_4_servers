@@ -21,7 +21,7 @@ def root():
 @app.get("/test/{name}")
 def get_name(name):
     with open("name.txt","a",encoding="utf-8") as file:
-        file.write(name)
+        file.write(name + "\n")
     return { "msg": "saved user"}
 
 @app.post("/caesar")
